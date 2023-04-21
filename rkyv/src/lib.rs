@@ -193,12 +193,8 @@ extern crate bytecheck;
 extern crate bytecheck_derive;
 #[cfg(feature = "validation")]
 #[cfg_attr(doc_cfg, doc(cfg(feature = "validation")))]
-<<<<<<< Updated upstream
 pub use bytecheck::{self, CheckBytes};
-=======
-pub use bytecheck::CheckBytes;
 
->>>>>>> Stashed changes
 use core::alloc::Layout;
 use ptr_meta::Pointee;
 pub use rkyv_derive::{Archive, Deserialize, Serialize};
