@@ -53,6 +53,11 @@
 
 ```rust
 use rkyv::{Archive, Deserialize, Serialize};
+<<<<<<< Updated upstream
+=======
+// bytecheck can be used to validate your data if you want
+use rkyv::CheckBytes;
+>>>>>>> Stashed changes
 
 #[derive(Archive, Deserialize, Serialize, Debug, PartialEq)]
 #[archive(

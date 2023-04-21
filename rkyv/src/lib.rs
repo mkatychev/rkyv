@@ -132,6 +132,20 @@
     2.702-2.702 2.702 13.512-13.512-2.702 2.703-2.702-8.107-8.107z"/%3E%3C/svg%3E
 "#)]
 
+#[cfg(doctest)]
+mod test_md {
+    macro_rules! external_doc_test {
+        ($x:expr) => {
+            #[cfg_attr(feature = "validation", doc = include_str!($x))]
+            extern "C" {}
+        };
+    }
+
+    external_doc_test!("../crates-io.md");
+    external_doc_test!("../README.md");
+    external_doc_test!("../../README.md");
+}
+
 #[cfg(all(feature = "alloc", not(feature = "std")))]
 extern crate alloc;
 #[cfg(feature = "std")]
@@ -172,9 +186,19 @@ pub mod with;
 #[cfg(feature = "rend")]
 pub use rend;
 
+// Re-export #[derive(CheckBytes)].
+#[cfg(feature = "validation")]
+extern crate bytecheck;
+#[cfg(feature = "validation")]
+extern crate bytecheck_derive;
 #[cfg(feature = "validation")]
 #[cfg_attr(doc_cfg, doc(cfg(feature = "validation")))]
+<<<<<<< Updated upstream
 pub use bytecheck::{self, CheckBytes};
+=======
+pub use bytecheck::CheckBytes;
+
+>>>>>>> Stashed changes
 use core::alloc::Layout;
 use ptr_meta::Pointee;
 pub use rkyv_derive::{Archive, Deserialize, Serialize};

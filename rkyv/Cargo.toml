@@ -13,7 +13,12 @@ repository.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+<<<<<<< Updated upstream
 bytecheck = { workspace = true, optional = true }
+=======
+bytecheck = { workspace = true, optional = true, default-features = false }
+bytecheck_derive = { workspace = true, optional = true, default-features = false }
+>>>>>>> Stashed changes
 hashbrown = { version = "0.12", optional = true }
 ptr_meta = { workspace = true, default-features = false }
 rend = { version = "0.4", optional = true, default-features = false }
@@ -47,7 +52,7 @@ size_32 = []
 size_64 = []
 std = ["alloc", "bytecheck/std", "ptr_meta/std", "rend/std"]
 strict = ["rkyv_derive/strict"]
-validation = ["alloc", "bytecheck", "rend/validation"]
+validation = ["alloc", "bytecheck", "bytecheck_derive", "rend/validation"]
 
 bitvec_alloc = ["bitvec/alloc"]
 tinyvec_alloc = ["tinyvec/alloc"]

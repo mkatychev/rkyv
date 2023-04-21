@@ -15,6 +15,20 @@ pub mod util;
 #[cfg(feature = "validation")]
 pub mod validation;
 
+#[cfg(doctest)]
+mod test_md {
+    macro_rules! external_doc_test {
+        ($x:expr) => {
+            #[cfg_attr(feature = "validation", doc = include_str!($x))]
+            extern "C" {}
+        };
+    }
+
+    // external_doc_test!("../crates-io.md");
+    // external_doc_test!("../README.md");
+    external_doc_test!("../../README.md");
+}
+
 #[cfg(test)]
 mod tests {
     use crate::util::core::*;
